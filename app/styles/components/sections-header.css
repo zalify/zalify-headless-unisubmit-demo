@@ -1,0 +1,361 @@
+/* extracted from sections/header.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .section-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: var(--color-background);
+      transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+    /* Transparent mode (home page): the sticky wrapper keeps its slot
+       but pulls the next section up underneath itself; --header-stack
+       shrinks so viewport-filling heroes grow under the header. All
+       pure CSS — heights are final at first paint. */
+    .section-header:has(.header--transparent) {
+      margin-block-end: calc(-1 * var(--header-height, 3.5rem));
+    }
+    html:has(.header--transparent) {
+      --header-stack: var(--announcement-bar-height, 0rem);
+    }
+    /* At the top, unhovered: see-through chrome in the configured
+       color. Scroll, hover, or focus turns it solid so navigation and
+       the mega menu always sit on a readable background. */
+    .section-header:has(.header--transparent):not(.is-scrolled):not(:hover):not(:focus-within) {
+      background-color: transparent;
+      color: var(--color-header-transparent, #fff);
+      --color-foreground: var(--color-header-transparent, #fff);
+    }
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--space-md);
+      min-height: var(--header-height, 3.5rem);
+    }
+    .header__logo {
+      justify-self: start;
+    }
+    .header__logo-image {
+      width: var(--logo-width, 8rem);
+      height: auto;
+    }
+    .header__logo-text {
+      font-size: var(--type-lg);
+      font-weight: 700;
+      letter-spacing: var(--type-tracking-caps);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .header__nav {
+      display: none;
+    }
+    .header__link {
+      color: currentcolor;
+      text-decoration: none;
+      font-size: var(--type-sm);
+      cursor: pointer;
+      transition: opacity var(--transition-fast);
+    }
+    .header__link:hover {
+      opacity: 0.6;
+    }
+    .header__icons {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .header__icons svg {
+      width: 1.25rem;
+    }
+    .header__icon-button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: currentcolor;
+      display: flex;
+    }
+    .header__icon-button svg {
+      width: 1.25rem;
+    }
+    .header__text-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: currentcolor;
+      text-decoration: none;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: opacity var(--transition-fast);
+    }
+    .header__text-button:hover {
+      opacity: 0.6;
+    }
+    .header__account {
+      display: none;
+    }
+    .search-drawer {
+      padding: var(--space-lg);
+      max-width: var(--page-width);
+      margin-inline: auto;
+      width: 100%;
+      --stack-gap: var(--space-md);
+    }
+    .search-drawer__form {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .search-drawer__input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      border-block-end: var(--border-width) solid var(--color-border);
+      border-radius: 0;
+      padding-inline: 0;
+      font-size: var(--type-lg);
+    }
+    .search-drawer__input:focus-visible {
+      outline: none;
+      border-color: var(--color-foreground);
+    }
+    .search-drawer__results:not(:empty) {
+      max-height: 60svh;
+      overflow-y: auto;
+    }
+    /* Mobile menu, Glossier-style: full-width hairline rows; items
+       with children disclose via a +/− toggle instead of navigating */
+    .drawer__body.mobile-menu {
+      /* Align rows with the drawer header's inline padding; flex so
+         the utility block sinks to the bottom when the list is short */
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-xs) var(--space-lg) var(--space-lg);
+    }
+    .mobile-menu__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .mobile-menu__utility {
+      margin-block-start: auto;
+      display: grid;
+      gap: var(--space-md);
+      justify-items: start;
+      padding-block-start: var(--space-xl);
+    }
+    .mobile-menu__utility-link {
+      color: currentcolor;
+      text-decoration: none;
+      font-size: var(--type-sm);
+    }
+    .mobile-menu__locale {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    /* Promo strip (mega menu + mobile menu groups): 2.5 cards visible,
+       the rest scroll horizontally */
+    .mega-promos-row {
+      display: flex;
+      gap: var(--space-md);
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      --promo-size: calc((100% - 2 * var(--space-md)) / 2.5);
+    }
+    .mega-promos-row::-webkit-scrollbar {
+      display: none;
+    }
+    .mobile-menu__promos {
+      padding-block: var(--space-xs) var(--space-md);
+    }
+    .mobile-menu__item {
+      border-block-end: var(--border-width) solid var(--color-border);
+    }
+    .mobile-menu__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-block: var(--space-md);
+      font-size: var(--type-md);
+      font-weight: 500;
+      color: currentcolor;
+      text-decoration: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-menu__row::-webkit-details-marker {
+      display: none;
+    }
+    summary.mobile-menu__row {
+      list-style: none;
+    }
+    .mobile-menu__row--sub {
+      font-weight: 400;
+      font-size: var(--type-sm);
+      padding-block: var(--space-xs);
+    }
+    .mobile-menu__sublist {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 var(--space-md) var(--space-md);
+    }
+    .mobile-menu__sublist--nested {
+      padding-block-end: var(--space-xs);
+    }
+    .mobile-menu__toggle {
+      position: relative;
+      width: 0.6875rem;
+      aspect-ratio: 1;
+      flex: none;
+    }
+    .mobile-menu__toggle::before,
+    .mobile-menu__toggle::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background-color: currentcolor;
+    }
+    .mobile-menu__toggle::before {
+      width: 100%;
+      height: 1px;
+    }
+    .mobile-menu__toggle::after {
+      width: 1px;
+      height: 100%;
+      transition: scale var(--transition-fast);
+    }
+    .mobile-menu__group[open] > summary .mobile-menu__toggle::after {
+      scale: 1 0;
+    }
+
+    @media (min-width: 48rem) {
+      .header {
+        grid-template-columns: 1fr auto 1fr;
+      }
+      .header__menu-text {
+        display: none;
+      }
+      .header__account {
+        display: flex;
+      }
+      .header__nav {
+        display: flex;
+        gap: var(--space-lg);
+        justify-self: center;
+        order: 0;
+
+        /* Stretch nav items to the full header height so the hover
+           zone is contiguous with the mega panel below — no dead gap
+           between the link and the panel to dismiss the menu. */
+        align-self: stretch;
+        align-items: stretch;
+      }
+      .header__nav > .header__link,
+      .header__dropdown,
+      .header__dropdown > .header__link {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+      /* Full-width mega panel, positioned against .section-header
+         (the sticky wrapper is the containing block). Opens on hover
+         and keyboard focus; the close transition-delay lets the
+         pointer cross the gap between the nav link and the panel. */
+      .header__mega {
+        position: absolute;
+        inset: 100% 0 auto 0;
+        display: grid;
+        grid-template-columns: var(--content-grid);
+        background-color: var(--color-background);
+        border-block: var(--border-width) solid var(--color-border);
+        box-shadow: 0 1rem 2rem rgb(0 0 0 / 6%);
+        visibility: hidden;
+        opacity: 0;
+        translate: 0 -0.25rem;
+        pointer-events: none;
+        transition:
+          opacity var(--transition-fast) 200ms,
+          translate var(--transition-fast) 200ms,
+          visibility 0s 350ms;
+      }
+      .header__dropdown:hover .header__mega,
+      .header__dropdown:focus-within .header__mega {
+        visibility: visible;
+        opacity: 1;
+        translate: 0 0;
+        pointer-events: auto;
+        transition:
+          opacity var(--transition-fast) 50ms,
+          translate var(--transition-fast) 50ms,
+          visibility 0s 50ms;
+      }
+      /* The React mirrors add this class when a dropdown link is
+         clicked: a client-side navigation resets neither :hover nor
+         :focus-within, so the panel would stay open on the new page.
+         Removed on mouseleave — the next hover opens as usual. A full
+         page load resets both states, so Liquid never toggles it. */
+      .header__dropdown.header__dropdown--suppressed .header__mega {
+        visibility: hidden;
+        opacity: 0;
+        translate: 0 -0.25rem;
+        pointer-events: none;
+        transition: none;
+      }
+      .header__mega-inner {
+        grid-column: 2;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2xl);
+        padding-block: var(--space-xl);
+      }
+      .header__mega-columns {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2xl);
+      }
+      .header__mega-group {
+        --stack-gap: var(--space-sm);
+      }
+      .header__mega-list {
+        --stack-gap: var(--space-xs);
+      }
+      .header__mega-heading {
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .header__mega-link {
+        text-decoration: none;
+        transition: opacity var(--transition-fast);
+      }
+      .header__mega-link:hover {
+        opacity: 0.6;
+      }
+      .header__mega-promos {
+        display: none;
+      }
+    }
+
+    @media (min-width: 64rem) {
+      /* Up to 6 promo cards; 2.5 visible, rest scroll (.mega-promos-row) */
+      .header__mega-promos {
+        display: flex;
+        flex: 0 1 34rem;
+        min-width: 0;
+      }
+    }
+
+  }

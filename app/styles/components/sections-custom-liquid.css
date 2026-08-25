@@ -1,0 +1,10 @@
+/* extracted from sections/custom-liquid.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .custom-liquid {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .custom-liquid__inner {
+      grid-column: 2;
+    }
+  }

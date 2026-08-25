@@ -1,0 +1,39 @@
+/* extracted from blocks/_box.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .hero__box {
+      position: absolute;
+      display: grid;
+      gap: var(--space-sm);
+      max-width: min(30rem, 100%);
+      pointer-events: auto;
+      border-radius: var(--style-border-radius-cards, 0);
+      translate: var(--box-tx, 0) var(--box-ty, 0);
+    }
+    .hero__box:empty {
+      display: none;
+    }
+    .hero__box--backdrop {
+      padding: var(--space-md);
+      background-color: var(--color-background);
+    }
+    .hero__box--x-start {
+      inset-inline-start: 0;
+    }
+    .hero__box--x-center {
+      inset-inline-start: 50%;
+      --box-tx: -50%;
+    }
+    .hero__box--x-end {
+      inset-inline-end: 0;
+    }
+    .hero__box--y-start {
+      inset-block-start: var(--space-xl);
+    }
+    .hero__box--y-center {
+      inset-block-start: 50%;
+      --box-ty: -50%;
+    }
+    .hero__box--y-end {
+      inset-block-end: var(--space-xl);
+    }
+  }

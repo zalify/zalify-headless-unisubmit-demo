@@ -1,0 +1,28 @@
+{
+  "name": "zalify-headless-unisubmit-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/generate-store-registry.mjs && node scripts/generate-store-theme-data.mjs",
+    "dev": "node scripts/generate-store-registry.mjs && node scripts/generate-store-theme-data.mjs && next dev",
+    "prebuild": "node scripts/generate-store-registry.mjs && node scripts/generate-store-theme-data.mjs",
+    "build": "node scripts/generate-store-registry.mjs && node scripts/generate-store-theme-data.mjs && next build",
+    "generate:stores": "node scripts/generate-store-registry.mjs && node scripts/generate-store-theme-data.mjs",
+    "generate:store-registry": "node scripts/generate-store-registry.mjs",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@zalify/storefront-kit": "^0.1.9",
+    "next": "^16.3.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.2"
+  }
+}

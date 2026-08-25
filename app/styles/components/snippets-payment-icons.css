@@ -1,0 +1,13 @@
+/* extracted from snippets/payment-icons.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .payment-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2xs);
+    }
+    .payment-icons__icon {
+      display: block;
+      height: 1.5rem;
+      width: auto;
+    }
+  }

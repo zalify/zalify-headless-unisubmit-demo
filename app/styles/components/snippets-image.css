@@ -1,0 +1,15 @@
+/* extracted from snippets/image.liquid — do not edit; run `pnpm sync` */
+@layer components {
+  .image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+
+  .image > img {
+    width: 100%;
+    height: auto;
+  }
+  }

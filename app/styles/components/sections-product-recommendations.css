@@ -1,0 +1,36 @@
+/* extracted from sections/product-recommendations.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .recommendations {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .recommendations__inner {
+      grid-column: 2;
+    }
+    .recommendations__heading {
+      font-size: var(--type-xl);
+      font-weight: 400;
+      margin-block-end: var(--space-lg);
+    }
+    .recommendations__row {
+      display: flex;
+      gap: var(--space-md);
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      /* Bleed the scroll area to the page edge so cut-off cards hint
+         at more content, while items still align to the content column */
+      margin-inline: calc(-1 * var(--page-margin));
+      padding-inline: var(--page-margin);
+      /* Snap targets align to the scrollport edge, not the padding box —
+         inset the snapport so snapped cards keep the page margin */
+      scroll-padding-inline: var(--page-margin);
+    }
+    .recommendations__row::-webkit-scrollbar {
+      display: none;
+    }
+    .recommendations__row > li {
+      flex: 0 0 clamp(9.5rem, 42vw, 16rem);
+      scroll-snap-align: start;
+    }
+  }

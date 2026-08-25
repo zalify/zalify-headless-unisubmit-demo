@@ -1,0 +1,39 @@
+/* extracted from snippets/promo-card.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .promo-card {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      border-radius: var(--style-border-radius-cards, 0);
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    .promo-card__image,
+    .promo-card__placeholder,
+    .promo-card__video,
+    .promo-card__video video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo-card__panel {
+      position: absolute;
+      inset-inline-start: var(--space-sm);
+      inset-block-end: var(--space-sm);
+      max-width: calc(100% - 2 * var(--space-sm));
+      display: grid;
+      gap: var(--space-sm);
+      justify-items: start;
+      padding: var(--space-md);
+      background-color: var(--color-background);
+      color: var(--color-foreground);
+    }
+    .promo-card__text {
+      font-size: var(--type-sm);
+    }
+    .promo-card__button {
+      font-size: var(--type-xs);
+      padding-block: var(--space-xs);
+    }
+  }

@@ -1,0 +1,41 @@
+/* extracted from sections/video-carousel.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .video-carousel {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+      --video-card-size: var(--video-card-size-mobile, 200px);
+    }
+    .video-carousel__inner {
+      grid-column: 2;
+      min-width: 0;
+    }
+    .video-carousel__list {
+      display: flex;
+      gap: var(--space-sm);
+      overflow-x: auto;
+      scrollbar-width: none;
+      scroll-snap-type: x proximity;
+      /* Bleed to the page edge so a cut-off card hints at more */
+      margin-inline: calc(-1 * var(--page-margin));
+      padding-inline: var(--page-margin);
+      scroll-padding-inline: var(--page-margin);
+    }
+    .video-carousel__list::-webkit-scrollbar {
+      display: none;
+    }
+    /* Direct children are the editor's block wrappers */
+    .video-carousel__list > * {
+      flex: 0 0 var(--video-card-size);
+      min-width: 0;
+      scroll-snap-align: start;
+    }
+
+    @media (min-width: 48rem) {
+      .video-carousel {
+        --video-card-size: var(--video-card-size-desktop, 280px);
+      }
+      .video-carousel__list {
+        gap: var(--space-md);
+      }
+    }
+  }

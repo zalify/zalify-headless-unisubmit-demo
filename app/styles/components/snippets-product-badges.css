@@ -1,0 +1,24 @@
+/* extracted from snippets/product-badges.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .badge {
+      width: fit-content;
+      padding: var(--space-2xs) var(--space-sm);
+      border-radius: var(--style-border-radius-buttons, 0);
+      background-color: var(--style-badge-background, var(--color-background));
+      color: var(--style-badge-text, var(--color-foreground));
+      font-size: var(--type-xs);
+      line-height: 1.2;
+    }
+    .badge--sale {
+      background-color: var(--style-badge-sale-background, var(--color-foreground));
+      color: var(--style-badge-sale-text, var(--color-background));
+    }
+    .badge--style-1 {
+      background-color: var(--style-badge-1-background);
+      color: var(--style-badge-1-text);
+    }
+    .badge--style-2 {
+      background-color: var(--style-badge-2-background);
+      color: var(--style-badge-2-text);
+    }
+  }

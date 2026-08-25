@@ -1,0 +1,12 @@
+/* extracted from snippets/localization-selects.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .localization-form {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      max-width: 100%;
+    }
+    .localization-form .select {
+      max-width: 16rem;
+    }
+  }

@@ -1,0 +1,78 @@
+/* extracted from sections/stories.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .stories {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+      --story-size: var(--story-size-mobile, 72px);
+    }
+    .stories__inner {
+      grid-column: 2;
+    }
+    .stories__list {
+      /* Column-flow grid: with 2 rows, items pair vertically
+         (Dresses/Bags, Bedding/Pants, ...) and scroll as one strip */
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: repeat(var(--story-rows, 1), auto);
+      grid-auto-columns: var(--story-size);
+      column-gap: var(--space-lg);
+      row-gap: var(--space-xl);
+      overflow-x: auto;
+      scrollbar-width: none;
+      /* Bleed to the page edge so a cut-off item hints at more */
+      margin-inline: calc(-1 * var(--page-margin));
+      padding-inline: var(--page-margin);
+      scroll-padding-inline: var(--page-margin);
+    }
+    .stories__list::-webkit-scrollbar {
+      display: none;
+    }
+    .story {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+      width: var(--story-size);
+      text-decoration: none;
+    }
+    .story__media {
+      display: block;
+      width: var(--story-size);
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .stories--circle .story__media {
+      border-radius: var(--radius-pill);
+    }
+    .stories--square .story__media {
+      border-radius: var(--style-border-radius-cards, 0);
+    }
+    .story__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+      transition: scale var(--transition-base);
+    }
+    .story:hover .story__image {
+      scale: 1.06;
+    }
+    .story__label {
+      max-width: 100%;
+      font-size: var(--type-sm);
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 48rem) {
+      .stories {
+        --story-size: var(--story-size-desktop, 96px);
+      }
+      .stories__list {
+        column-gap: var(--space-xl);
+      }
+    }
+  }

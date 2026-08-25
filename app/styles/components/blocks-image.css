@@ -1,0 +1,26 @@
+/* extracted from blocks/image.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .image-block__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--style-border-radius-cards, 0);
+    }
+    .image-block__placeholder {
+      background-color: color-mix(in oklch, var(--color-foreground) 5%, var(--color-background));
+    }
+    .image-block--square {
+      aspect-ratio: 1;
+    }
+    .image-block--portrait {
+      aspect-ratio: 4 / 5;
+    }
+    .image-block--landscape {
+      aspect-ratio: 3 / 2;
+    }
+    .image-block--square .image-block__image,
+    .image-block--portrait .image-block__image,
+    .image-block--landscape .image-block__image {
+      height: 100%;
+    }
+  }

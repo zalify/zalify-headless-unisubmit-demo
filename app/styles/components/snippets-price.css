@@ -1,0 +1,21 @@
+/* extracted from snippets/price.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .price {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: baseline;
+    }
+    .price__compare {
+      opacity: 0.55;
+      font-size: 0.9em;
+    }
+    .price__unit {
+      flex-basis: 100%;
+      opacity: 0.65;
+      font-size: var(--type-xs);
+    }
+    .price--sale .price__current {
+      color: var(--color-accent, currentcolor);
+    }
+  }

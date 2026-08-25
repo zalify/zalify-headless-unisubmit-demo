@@ -1,0 +1,234 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "slide": {
+          "type": "_slide",
+          "settings": {},
+          "blocks": {
+            "box": {
+              "type": "_box",
+              "settings": {
+                "position_x": "start",
+                "position_y": "center",
+                "backdrop": true
+              },
+              "blocks": {
+                "eyebrow": {
+                  "type": "text",
+                  "settings": {
+                    "text": "New arrivals",
+                    "text_style": "text--eyebrow"
+                  }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "Made for the season ahead.",
+                    "text_style": "text--display"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "Fresh drops and familiar favorites — browse what's new and find your next go-to.",
+                    "text_style": "text--normal"
+                  }
+                },
+                "button": {
+                  "type": "button",
+                  "settings": {
+                    "label": "Shop new in",
+                    "link": "/collections/all"
+                  }
+                }
+              },
+              "block_order": ["eyebrow", "heading", "text", "button"]
+            }
+          },
+          "block_order": ["box"]
+        }
+      },
+      "block_order": ["slide"],
+      "settings": {
+        "height": "lg"
+      }
+    },
+    "stories": {
+      "type": "stories",
+      "blocks": {
+        "story-1": {
+          "type": "story",
+          "settings": { "label": "Shop all", "link": "/collections/all" }
+        },
+        "story-2": {
+          "type": "story",
+          "settings": { "label": "Best sellers", "link": "/collections/best-sellers" }
+        },
+        "story-3": {
+          "type": "story",
+          "settings": { "label": "New in", "link": "/collections/all" }
+        },
+        "story-4": {
+          "type": "story",
+          "settings": { "label": "Sale", "link": "/collections/sale" }
+        }
+      },
+      "block_order": ["story-1", "story-2", "story-3", "story-4"],
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Best sellers",
+        "collection": "best-sellers",
+        "products_to_show": 8
+      }
+    },
+    "editorial": {
+      "type": "image-with-text",
+      "settings": {
+        "image_position": "left",
+        "color_scheme": "scheme-3"
+      },
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": { "text": "Our story", "text_style": "text--eyebrow" }
+        },
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "Made with intention.",
+            "text_style": "text--title"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Every piece in our catalog earns its place — considered materials, honest prices, and details you'll notice long after the box is gone.",
+            "text_style": "text--normal"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the collection",
+            "link": "/collections/all",
+            "style": "button--secondary"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text", "button"]
+    },
+    "value_props": {
+      "type": "multicolumn",
+      "settings": {
+        "columns": 3,
+        "color_scheme": "scheme-2",
+        "section_spacing": "lg"
+      },
+      "blocks": {
+        "col-1": {
+          "type": "group",
+          "settings": { "layout_direction": "group--vertical" },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "settings": { "text": "Free shipping", "text_style": "text--title" }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "On every order over $50 — no codes, no surprises at checkout.",
+                "text_style": "text--normal"
+              }
+            }
+          },
+          "block_order": ["title", "text"]
+        },
+        "col-2": {
+          "type": "group",
+          "settings": { "layout_direction": "group--vertical" },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "settings": { "text": "Easy returns", "text_style": "text--title" }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "30 days to change your mind, with free returns on every order.",
+                "text_style": "text--normal"
+              }
+            }
+          },
+          "block_order": ["title", "text"]
+        },
+        "col-3": {
+          "type": "group",
+          "settings": { "layout_direction": "group--vertical" },
+          "blocks": {
+            "title": {
+              "type": "text",
+              "settings": { "text": "Secure checkout", "text_style": "text--title" }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "Every major payment method, protected end to end.",
+                "text_style": "text--normal"
+              }
+            }
+          },
+          "block_order": ["title", "text"]
+        }
+      },
+      "block_order": ["col-1", "col-2", "col-3"]
+    },
+    "closing": {
+      "type": "rich-text",
+      "settings": {
+        "alignment": "center",
+        "section_spacing": "lg"
+      },
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": { "text": "Why us", "text_style": "text--eyebrow", "alignment": "center" }
+        },
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "Considered, crafted, delivered.",
+            "text_style": "text--title",
+            "alignment": "center"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "label": "Browse everything", "link": "/collections/all" }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "button"]
+    }
+  },
+  "order": [
+    "hero",
+    "stories",
+    "featured_collection",
+    "editorial",
+    "value_props",
+    "closing"
+  ]
+}

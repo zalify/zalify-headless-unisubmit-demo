@@ -1,0 +1,99 @@
+/* extracted from sections/blog.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .blog {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .blog__inner {
+      grid-column: 2;
+    }
+    .blog__title {
+      font-size: var(--type-xl);
+      font-weight: 400;
+    }
+    .blog__empty {
+      padding-block: var(--space-2xl);
+      opacity: 0.7;
+    }
+    /* Newest post leads: media beside meta/title/excerpt on desktop */
+    .article-feature {
+      display: grid;
+      gap: var(--space-md) var(--space-2xl);
+      align-items: end;
+      padding-block-end: var(--space-xl);
+      border-block-end: var(--border-width) solid var(--color-border);
+    }
+    .article-feature__media {
+      display: block;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border-radius: var(--style-border-radius-cards, 0);
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    .article-feature__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .article-feature__title {
+      font-size: var(--type-xl);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .article-feature__title a,
+    .article-card__title a {
+      text-decoration: none;
+    }
+    .article-feature__title a:hover,
+    .article-card__title a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+    .blog__grid {
+      display: grid;
+      gap: var(--space-xl) var(--space-lg);
+    }
+    .article-card__media {
+      display: block;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border-radius: var(--style-border-radius-cards, 0);
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    .article-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: scale var(--transition-base);
+    }
+    .article-card__media:hover .article-card__image,
+    .article-feature__media:hover .article-feature__image {
+      scale: 1.04;
+    }
+    .article-card__meta {
+      font-size: var(--type-xs);
+      opacity: 0.7;
+    }
+    .article-card__title {
+      font-size: var(--type-md);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .article-card__excerpt {
+      font-size: var(--type-sm);
+      line-height: var(--type-leading-base);
+      opacity: 0.8;
+    }
+    .blog__pagination {
+      text-align: center;
+    }
+
+    @media (min-width: 48rem) {
+      .article-feature {
+        grid-template-columns: 5fr 3fr;
+      }
+      .blog__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }

@@ -1,0 +1,50 @@
+/* extracted from sections/search.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .search-page {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .search-page__inner {
+      grid-column: 2;
+    }
+    .search-page__form {
+      display: flex;
+      gap: var(--space-sm);
+      max-width: 32rem;
+    }
+    .search-page__form input {
+      flex: 1;
+      min-width: 0;
+    }
+    .search-page__count {
+      opacity: 0.7;
+    }
+    .result-card__media {
+      display: block;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: var(--style-border-radius-cards, 0);
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    .result-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .result-card__type {
+      font-size: var(--type-xs);
+      letter-spacing: var(--type-tracking-caps);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .result-card__title {
+      font-size: var(--type-sm);
+      font-weight: 500;
+    }
+    .result-card__title a {
+      text-decoration: none;
+    }
+    .search-page__pagination {
+      text-align: center;
+    }
+  }

@@ -1,0 +1,26 @@
+/* extracted from sections/main-addresses.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .customer__address-toggle > summary {
+      cursor: pointer;
+      width: fit-content;
+      list-style: none;
+    }
+    .customer__address-toggle > summary::-webkit-details-marker {
+      display: none;
+    }
+    .customer__address-toggle[open] > summary {
+      margin-block-end: var(--space-md);
+    }
+    .customer__delete {
+      background: none;
+      border: none;
+      padding: 0;
+      color: currentcolor;
+      font: inherit;
+    }
+    .customer__default-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+  }

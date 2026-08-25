@@ -1,0 +1,18 @@
+/* extracted from sections/rich-text.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .rich-text {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .rich-text__inner {
+      grid-column: 2;
+      max-width: 42rem;
+      width: 100%;
+      --stack-gap: var(--space-md);
+    }
+    .rich-text--center {
+      margin-inline: auto;
+      align-items: center;
+      text-align: center;
+    }
+  }

@@ -1,0 +1,251 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "Page not found.",
+    "back_to_shopping": "Back to shopping"
+  },
+  "blog": {
+    "article_comments": "Comments",
+    "article_metadata_html": "{{ date }} by {{ author }}",
+    "back_to_blog": "Back to {{ blog }}",
+    "comment_form_body": "Comment",
+    "comment_form_email": "Email",
+    "comment_form_name": "Name",
+    "comment_form_submit": "Post",
+    "comment_form_title": "Add a comment",
+    "comment_success": "Your comment was posted successfully.",
+    "comment_success_moderated": "Your comment was posted successfully. It will be visible once approved.",
+    "empty": "No posts yet — check back soon."
+  },
+  "cart": {
+    "add": "Add",
+    "bag": "Bag",
+    "checkout": "Checkout",
+    "continue_shopping": "Continue shopping",
+    "decrease": "Decrease quantity",
+    "disclaimer_shipping": "Shipping and promotions calculated in checkout.",
+    "disclaimer_tax": "Sales tax shown in checkout is a best estimate and may differ from the amount actually charged.",
+    "empty": "Your cart is empty.",
+    "estimated_total": "Estimated total",
+    "free_shipping_over": "Free standard shipping over {{ amount }}",
+    "free_shipping_progress_html": "You're {{ remaining }} away from free standard shipping",
+    "free_shipping_unlocked": "Congrats! You get free standard shipping",
+    "increase": "Increase quantity",
+    "note": "Shipping and taxes calculated at checkout.",
+    "note_label": "Order note",
+    "note_placeholder": "How can we help?",
+    "quantity": "Quantity",
+    "recommendations": "You may also like",
+    "remove": "Remove",
+    "savings": "Savings",
+    "shipping": "Shipping",
+    "subtotal": "Subtotal",
+    "tax_note": "Tax calculated in checkout",
+    "taxes_included": "Tax included",
+    "terms_html": "By checking out, you agree to our {{ terms_link }} and {{ privacy_link }}.",
+    "title": "Cart",
+    "update": "Update",
+    "voucher_apply": "Apply",
+    "voucher_applied": "Applied",
+    "voucher_error": "This code can't be applied to your cart right now."
+  },
+  "collections": {
+    "empty": "No products found.",
+    "title": "Collections",
+    "view_all": "View all"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone number (optional)",
+    "message": "Message",
+    "send": "Send message",
+    "success": "Thanks for reaching out. We’ll get back to you as soon as we can."
+  },
+  "customers": {
+    "account": {
+      "title": "Account",
+      "orders": "Order history",
+      "no_orders": "You have not placed any orders yet.",
+      "view_addresses": "Addresses ({{ count }})",
+      "log_out": "Log out"
+    },
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "submit": "Activate account",
+      "decline": "Decline invitation"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default address",
+      "add_new": "Add a new address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirm_delete": "Are you sure you want to delete this address?",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address line 1",
+      "address2": "Address line 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "Province",
+      "zip": "Postal/ZIP code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "save": "Save address"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "create_account": "Create account"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_html": "Order cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "return_to_account": "Return to account",
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "fulfilled_at": "Fulfilled",
+      "track_shipment": "Track shipment",
+      "billing_address": "Billing address",
+      "shipping_address": "Shipping address"
+    },
+    "orders": {
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "total": "Total"
+    },
+    "recover": {
+      "title": "Forgot your password?",
+      "subtext": "Enter your email and we will send you a link to reset your password.",
+      "submit": "Send reset link",
+      "success": "If that email address is in our system, you will receive an email with instructions to reset your password shortly."
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "submit": "Create account",
+      "sign_in": "Already have an account? Sign in"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    }
+  },
+  "facets": {
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "clear_all": "Clear all",
+    "filter": "Filter",
+    "filters": "Filters",
+    "from": "From",
+    "items": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "sort": "Sort",
+    "sort_by": "Sort by",
+    "to": "To"
+  },
+  "general": {
+    "account": "Account",
+    "article": "Article",
+    "close": "Close",
+    "countdown": {
+      "days": "days",
+      "hours": "hours",
+      "minutes": "min",
+      "seconds": "sec"
+    },
+    "country": "Country/region",
+    "footer_navigation": "Footer navigation",
+    "go_to_slide": "Go to slide {{ number }}",
+    "language": "Language",
+    "log_in": "Log in",
+    "menu": "Menu",
+    "next": "Next",
+    "page": "Page",
+    "pause": "Pause",
+    "previous": "Previous",
+    "update": "Update",
+    "play_video": "Play video"
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "Add to Apple Wallet",
+    "card": "Gift card",
+    "expired": "This gift card has expired",
+    "expires_on": "Expires on {{ expires_on }}",
+    "qr_code": "QR code — scan to redeem gift card",
+    "use_at_checkout": "Use this gift card at checkout"
+  },
+  "newsletter": {
+    "email": "Email",
+    "heading": "Stay in the loop",
+    "submit": "Subscribe",
+    "success": "Thanks for subscribing."
+  },
+  "password": {
+    "title": "This shop is private",
+    "password": "Password",
+    "enter": "Enter"
+  },
+  "products": {
+    "add_to_bag": "Add to bag",
+    "add_to_cart": "Add to cart",
+    "best_seller": "Best seller",
+    "choose_options": "Choose options",
+    "complementary": "Pairs well with",
+    "next_image": "Next image",
+    "one_time_purchase": "One-time purchase",
+    "pickup": {
+      "available_at": "Pickup available at {{ location }}",
+      "unavailable_at": "Pickup currently unavailable at {{ location }}"
+    },
+    "previous_image": "Previous image",
+    "purchase_options": "Purchase options",
+    "quantity": "Quantity",
+    "rating_label": "Rated {{ rating }} out of {{ max }} stars ({{ count }} reviews)",
+    "recipient": {
+      "checkbox": "I want to send this as a gift",
+      "email": "Recipient email",
+      "name": "Recipient name (optional)",
+      "message": "Message (optional)",
+      "send_on": "Send on (optional)"
+    },
+    "recommendations": "You may also like",
+    "sale": "Sale",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "unit_price_label": "Unit price",
+    "zoom_image": "Zoom image",
+    "size_guide": "Size guide",
+    "size_option_match": "size",
+    "view_product": "View product",
+    "color_option_match": "color,colour"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Looking for something?",
+    "submit": "Search",
+    "no_results_html": "No results found for {{ terms }}",
+    "results_for_html": "{{ count }} results found for {{ terms }}",
+    "view_all": "View all results"
+  }
+}

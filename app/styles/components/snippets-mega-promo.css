@@ -1,0 +1,37 @@
+/* extracted from snippets/mega-promo.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .mega-promo {
+      flex: 0 0 var(--promo-size, 11rem);
+      width: var(--promo-size, 11rem);
+      scroll-snap-align: start;
+      text-decoration: none;
+      --stack-gap: var(--space-sm);
+    }
+    .mega-promo__image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--style-border-radius-cards, 0);
+    }
+    .mega-promo__placeholder {
+      background-color: color-mix(in oklch, var(--color-foreground) 5%, var(--color-background));
+    }
+    .mega-promo__caption {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-size: var(--type-sm);
+    }
+    .mega-promo__arrow {
+      /* inline-block: ancestor text-decoration never propagates into
+         atomic inline boxes, so the arrow can't inherit an underline */
+      display: inline-block;
+      text-decoration: none;
+      transition: translate var(--transition-fast);
+    }
+    @media (hover: hover) {
+      .mega-promo:hover .mega-promo__arrow {
+        translate: 0.25rem 0;
+      }
+    }
+  }

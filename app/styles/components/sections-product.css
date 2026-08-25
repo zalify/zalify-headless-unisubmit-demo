@@ -1,0 +1,568 @@
+/* extracted from sections/product.liquid — do not edit; run `pnpm sync` */
+@layer components {
+/* Unlayered on purpose: Shopify's payment-button stylesheet is
+     unlayered and would beat anything inside @layer components. The
+     unbranded "Buy it now" becomes our secondary button. */
+  .buy-buttons .shopify-payment-button__button--unbranded {
+    width: 100%;
+    padding: var(--space-sm) var(--space-lg);
+    border: var(--border-width) solid currentcolor;
+    border-radius: var(--style-border-radius-buttons, 0);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font: inherit;
+    letter-spacing: inherit;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+  .buy-buttons .shopify-payment-button__button--unbranded:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  @layer components {
+    .product {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .product__inner {
+      grid-column: 2;
+      display: grid;
+      gap: var(--space-lg);
+    }
+    .product__gallery {
+      display: grid;
+      gap: var(--space-sm);
+      align-content: start;
+    }
+    .product__gallery-frame {
+      position: relative;
+    }
+    .product__media-list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      border-radius: var(--style-border-radius-cards, 0);
+      /* Variant filtering hides slides; anchoring would fight the
+         programmatic reset to the group's first slide */
+      overflow-anchor: none;
+    }
+    .product__media-list::-webkit-scrollbar {
+      display: none;
+    }
+    .product__media-item {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+
+    /* Mobile peek: next slide's edge shows to hint swipeability */
+    @media (max-width: 47.9375rem) {
+      .product__gallery--mobile-peek .product__media-list {
+        gap: var(--space-xs);
+      }
+      .product__gallery--mobile-peek .product__media-item {
+        flex-basis: 85%;
+      }
+    }
+    .product__media-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: zoom-in;
+    }
+    .product__image {
+      width: 100%;
+      height: auto;
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    /* Tall portrait shots would exceed the mobile viewport at natural
+       aspect; cap each slide so a full media item is always in view.
+       svh stays stable while the address bar collapses, so media never
+       resizes mid-scroll (vh line = fallback for older browsers). */
+    @media (max-width: 47.9375rem) {
+      .product__media-item img,
+      .product__media-item video {
+        max-height: 80vh;
+        max-height: 80svh;
+        object-fit: contain;
+      }
+    }
+
+    /* Desktop: the whole gallery — media, thumbnails, controls — must
+       fit the first screen (On.com-style). Each slide is a FIXED-height
+       canvas (viewport minus the measured header stack minus ~10rem for
+       thumbs/controls), so nothing else on the page can resize the
+       media. Images sit contained on the canvas wash. */
+    @media (min-width: 48rem) {
+      .product__media-item {
+        height: calc(100vh - var(--header-stack, 3.5rem) - 10rem);
+        height: calc(100svh - var(--header-stack, 3.5rem) - 10rem);
+        background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+      }
+      .product__media-button {
+        height: 100%;
+      }
+      .product__media-item img,
+      .product__media-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    /* Fullscreen zoom carousel, Glossier-style: gray canvas, segmented
+       progress bar on top, bare white chevrons and close */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      max-width: 100vw;
+      max-height: 100dvh;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: color-mix(in oklch, var(--color-foreground) 55%, var(--color-background));
+      color: var(--color-background);
+      opacity: 0;
+      transition:
+        opacity var(--transition-base),
+        display var(--transition-base) allow-discrete,
+        overlay var(--transition-base) allow-discrete;
+    }
+    .lightbox[open] {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+    .lightbox::backdrop {
+      background: none;
+    }
+    .lightbox__bar {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 0;
+      z-index: 2;
+      display: flex;
+      gap: var(--space-2xs);
+      padding: var(--space-sm) var(--space-xl);
+    }
+    .lightbox__segment {
+      flex: 1;
+      padding: var(--space-xs) 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    .lightbox__segment::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: color-mix(in oklch, currentcolor 45%, transparent);
+      transition: background-color var(--transition-fast);
+    }
+    .lightbox__segment[aria-current]::after {
+      background-color: currentcolor;
+    }
+    /* Hover devices only: on touch, :hover sticks after a tap and
+       reads as a second "current slide" marker */
+    @media (hover: hover) {
+      .lightbox__segment:hover::after {
+        background-color: currentcolor;
+      }
+    }
+    .lightbox__close {
+      position: absolute;
+      inset-block-start: var(--space-xl);
+      inset-inline-end: var(--space-md);
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: var(--space-xs);
+      border: none;
+      background: none;
+      color: currentcolor;
+      cursor: pointer;
+    }
+    .lightbox__close svg {
+      width: 1.25rem;
+    }
+    .lightbox__track {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .lightbox__track::-webkit-scrollbar {
+      display: none;
+    }
+    .lightbox__slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      display: grid;
+      place-items: center;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* Explicit display above would otherwise override the UA's
+       [hidden] rule and keep filtered-out variant slides in the track */
+    .lightbox__slide[hidden] {
+      display: none;
+    }
+    .lightbox__image {
+      max-width: 100%;
+      max-height: 100dvh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .lightbox__arrow {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: var(--space-xs);
+      border: none;
+      background: none;
+      color: currentcolor;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity var(--transition-fast);
+    }
+    .lightbox__arrow:hover {
+      opacity: 1;
+    }
+    .lightbox__arrow svg {
+      width: 1.5rem;
+    }
+    .lightbox__arrow--prev {
+      left: var(--space-sm);
+    }
+    .lightbox__arrow--next {
+      right: var(--space-sm);
+    }
+    .product__gallery-arrow {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      background-color: color-mix(in oklch, var(--color-background) 60%, transparent);
+      color: var(--color-foreground);
+      cursor: pointer;
+      transition: opacity var(--transition-fast);
+    }
+    .product__gallery-arrow:hover {
+      opacity: 0.8;
+    }
+    .product__gallery-arrow svg {
+      width: 1.125rem;
+    }
+    .product__gallery-arrow--prev {
+      left: var(--space-sm);
+    }
+    .product__gallery-arrow--next {
+      right: var(--space-sm);
+    }
+    .product__gallery-counter {
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-sm);
+      padding: var(--space-2xs) var(--space-sm);
+      border-radius: var(--radius-pill);
+      background-color: color-mix(in oklch, var(--color-background) 60%, transparent);
+      font-size: var(--type-xs);
+    }
+
+    /* Full-bleed gallery on mobile, Glossier-style */
+    @media (max-width: 47.9375rem) {
+      .product__gallery-frame {
+        margin-inline: calc(-1 * var(--page-margin));
+      }
+      .product__media-list {
+        border-radius: 0;
+      }
+    }
+    .product__thumbs {
+      display: flex;
+      gap: var(--space-xs);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .product__thumb {
+      flex: 0 0 4rem;
+      padding: 0;
+      border: var(--border-width) solid transparent;
+      border-radius: var(--style-border-radius-cards, 0);
+      overflow: hidden;
+      background: none;
+      cursor: pointer;
+    }
+    .product__thumb[aria-current] {
+      border-color: var(--color-foreground);
+    }
+    .product__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1;
+    }
+    .product__title {
+      font-size: var(--type-xl);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+    /* Collapse the options stack when every option renders hidden
+       (all single-value) — avoids an empty flex-gap slot */
+    .product__options:not(:has(fieldset:not([hidden]))) {
+      display: none;
+    }
+    .variant-thumb {
+      display: block;
+      width: 3.25rem;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: var(--style-border-radius-cards, 0);
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+      transition: outline-color var(--transition-fast);
+      outline: var(--border-width) solid var(--color-border);
+      outline-offset: 1px;
+    }
+    .variant-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .variant-thumb__fallback {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      font-size: var(--type-xs);
+      text-transform: uppercase;
+    }
+    .variant-option__value input:checked + .variant-thumb {
+      outline: 2px solid var(--color-foreground);
+    }
+    /* Sold-out value: dimmed image with a corner-to-corner cross line */
+    .variant-option__value input[data-unavailable] + .variant-thumb {
+      position: relative;
+    }
+    .variant-option__value input[data-unavailable] + .variant-thumb > * {
+      opacity: 0.45;
+    }
+    .variant-option__value input[data-unavailable] + .variant-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        to bottom left,
+        transparent calc(50% - 0.75px),
+        var(--color-foreground) calc(50% - 0.75px),
+        var(--color-foreground) calc(50% + 0.75px),
+        transparent calc(50% + 0.75px)
+      );
+    }
+    .variant-option__value input:focus-visible + .variant-thumb {
+      outline: 2px solid var(--color-foreground);
+      outline-offset: 3px;
+    }
+    /* PDP swatches: large square chips touching, Glossier-style
+       (generic picker primitives live in critical.css) */
+    .variant-option__values--swatches {
+      --cluster-gap: 0;
+    }
+    .variant-option .swatch {
+      width: 2.75rem;
+      border: none;
+      border-radius: var(--style-border-radius-cards, 0);
+    }
+    .variant-option__value input:checked + .swatch {
+      outline: var(--border-width) solid var(--color-foreground);
+      outline-offset: 0;
+      box-shadow: inset 0 0 0 2px var(--color-background);
+    }
+    .buy-buttons__submit {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .product__media-frame video,
+    .product__media-frame iframe,
+    .product__media-frame model-viewer {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: none;
+      background-color: color-mix(in oklch, var(--color-foreground) 4%, var(--color-background));
+    }
+    .product__media-frame model-viewer {
+      aspect-ratio: 1;
+    }
+    .selling-plans {
+      padding: var(--space-sm) var(--space-md);
+      border: var(--border-width) solid var(--color-border);
+      border-radius: var(--style-border-radius-cards, 0);
+    }
+    .selling-plans__legend {
+      font-weight: 500;
+      font-size: var(--type-sm);
+    }
+    .selling-plans__option {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--type-sm);
+    }
+    .product__quantity-label {
+      font-size: var(--type-sm);
+    }
+    .recipient__toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--type-sm);
+    }
+    .recipient .field {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+    .recipient .field__label {
+      font-size: var(--type-xs);
+      opacity: 0.8;
+    }
+    .pickup__status {
+      font-size: var(--type-sm);
+    }
+    .pickup__time {
+      font-size: var(--type-xs);
+      opacity: 0.7;
+    }
+    .form__message--error {
+      padding: var(--space-sm) var(--space-md);
+      border: var(--border-width) solid currentcolor;
+      border-radius: var(--style-border-radius-cards, 0);
+      color: var(--color-accent, currentcolor);
+      font-size: var(--type-sm);
+    }
+    /* Accordion blocks (description, shipping, custom) framed as a
+       group: hairline above the first, singles between neighbours
+       (each accordion carries its own bottom border). Theme blocks
+       arrive wrapped in .shopify-block divs, so accordions are never
+       direct siblings — detect "an accordion came before" via :has(). */
+    .product__info .accordion {
+      border-block-start: var(--border-width) solid var(--color-border);
+    }
+    .product__info .accordion ~ .accordion,
+    .product__info :has(.accordion) ~ :has(.accordion) .accordion {
+      border-block-start: none;
+    }
+    /* Consecutive accordion blocks sit flush as one framed list: pull
+       each one up by the column's stack gap to cancel it */
+    .product__info > :has(> .accordion) + :has(> .accordion),
+    .product__info > .accordion + .accordion {
+      margin-block-start: calc(-1 * var(--stack-gap, var(--space-md)));
+    }
+    /* The size-guide trigger renders whenever a size option exists but
+       shows only when a size-guide block contributes its dialog
+       (sections can't read theme block settings, so presence is
+       detected in CSS) */
+    .variant-option__guide {
+      display: none;
+    }
+    .product:has([data-size-guide]) .variant-option__guide {
+      display: inline-block;
+    }
+    .product__info .accordion__summary {
+      font-size: var(--type-sm);
+    }
+    .sticky-bar {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 9;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--page-margin);
+      background-color: var(--color-background);
+      border-block-start: var(--border-width) solid var(--color-border);
+      translate: 0 100%;
+      transition: translate var(--transition-base);
+    }
+    .sticky-bar[data-visible] {
+      translate: 0 0;
+    }
+    .sticky-bar__meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      gap: 0.125rem;
+    }
+    .sticky-bar__title {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sticky-bar__button {
+      margin-inline-start: auto;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 48rem) {
+      .product__inner {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        align-items: start;
+      }
+      .product__gallery {
+        position: sticky;
+        top: calc(var(--header-offset, 4rem) + var(--space-lg));
+      }
+      .product__gallery-arrow {
+        display: grid;
+      }
+      .product__info {
+        position: sticky;
+        top: calc(var(--header-offset, 4rem) + var(--space-lg));
+      }
+      .sticky-bar {
+        display: none;
+      }
+
+      /* Stacked desktop layout: long editorial scroll, no carousel UI */
+      .product__gallery--stacked {
+        position: static;
+      }
+      .product__gallery--stacked .product__media-list {
+        flex-direction: column;
+        gap: var(--space-sm);
+        overflow: visible;
+        scroll-snap-type: none;
+      }
+      .product__gallery--stacked .product__media-item {
+        flex: none;
+      }
+      .product__gallery--stacked .product__gallery-arrow,
+      .product__gallery--stacked .product__gallery-counter,
+      .product__gallery--stacked .product__thumbs {
+        display: none;
+      }
+    }
+  }
+}

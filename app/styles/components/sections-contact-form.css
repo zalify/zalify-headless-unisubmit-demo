@@ -1,0 +1,40 @@
+/* extracted from sections/contact-form.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .contact {
+      display: grid;
+      grid-template-columns: var(--content-grid);
+    }
+    .contact__inner {
+      grid-column: 2;
+      max-width: 40rem;
+      width: 100%;
+      margin-inline: auto;
+    }
+    .contact__form {
+      --stack-gap: var(--space-md);
+    }
+    .contact__row {
+      display: grid;
+      gap: var(--space-md);
+    }
+    .contact .field {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+    .contact .field__label {
+      font-size: var(--type-xs);
+      opacity: 0.8;
+    }
+    .contact__submit {
+      width: fit-content;
+    }
+    .form__message {
+      font-size: var(--type-sm);
+    }
+
+    @media (min-width: 48rem) {
+      .contact__row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }

@@ -1,0 +1,18 @@
+/* extracted from snippets/rating.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      font-size: var(--type-xs);
+      line-height: 1;
+    }
+    .rating__star svg {
+      display: block;
+      width: 0.8125rem;
+      height: 0.8125rem;
+    }
+    .rating__count {
+      opacity: 0.65;
+    }
+  }

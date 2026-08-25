@@ -1,0 +1,22 @@
+/* extracted from blocks/quote.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .quote {
+      --stack-gap: var(--space-sm);
+      margin: 0;
+    }
+    .quote__text {
+      margin: 0;
+      font-size: var(--type-lg);
+      line-height: var(--type-leading-base);
+    }
+    .quote__text p::before {
+      content: '\201C';
+    }
+    .quote__text p::after {
+      content: '\201D';
+    }
+    .quote__author {
+      font-size: var(--type-sm);
+      opacity: 0.7;
+    }
+  }

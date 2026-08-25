@@ -1,0 +1,36 @@
+/* extracted from blocks/_slide.liquid — do not edit; run `pnpm sync` */
+@layer components {
+    .hero__slide {
+      position: relative;
+      display: grid;
+      grid-template-columns: var(--content-grid);
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__media--placeholder {
+      background-color: color-mix(in oklch, var(--color-foreground) 6%, var(--color-background));
+    }
+    /* Stretched over the media, under the content box */
+    .hero__media-link {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+    /* The canvas the content boxes anchor to (blocks/_box.liquid):
+       clicks fall through empty areas to the media link, the boxes
+       themselves stay interactive */
+    .hero__content {
+      grid-column: 2;
+      position: relative;
+      pointer-events: none;
+    }
+  }

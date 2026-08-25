@@ -1,0 +1,24 @@
+/* extracted from blocks/text.liquid — do not edit; run `pnpm sync` */
+@layer components {
+  .text {
+    text-align: var(--text-align);
+  }
+  .text--title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .text--subtitle {
+    font-size: 1.5rem;
+  }
+  .text--display {
+    font-size: var(--type-lg);
+    font-weight: 400;
+    line-height: 1.25;
+  }
+  .text--eyebrow {
+    font-size: var(--type-xs);
+    font-family: var(--font-accent--family, inherit);
+    text-transform: uppercase;
+    letter-spacing: var(--type-tracking-caps);
+  }
+  }

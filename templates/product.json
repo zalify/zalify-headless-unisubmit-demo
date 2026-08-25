@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "title": {
+          "type": "_title",
+          "settings": {}
+        },
+        "variant-picker": {
+          "type": "_variant-picker",
+          "settings": {}
+        },
+        "quantity": {
+          "type": "_quantity",
+          "settings": {}
+        },
+        "buy-buttons": {
+          "type": "_buy-buttons",
+          "settings": {}
+        },
+        "details": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Details",
+            "content": "<p>Considered materials, an honest make, and details that hold up to daily use. Care is simple: follow the label, and it will stay with you for years.</p>"
+          }
+        },
+        "description": {
+          "type": "_description",
+          "settings": {}
+        },
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & returns",
+            "content": "<p>Free shipping on orders over $50, with tracking on every parcel. Not quite right? You have 30 days to send it back \u2014 free returns, no questions asked.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "variant-picker",
+        "quantity",
+        "buy-buttons",
+        "details",
+        "shipping",
+        "description"
+      ],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}
