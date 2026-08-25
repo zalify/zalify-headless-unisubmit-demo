@@ -15,7 +15,7 @@ The generated Next.js storefront remains the Shopify commerce shell. A small cli
 - Merchant-owned forms send `submission.form_id` and `submission.provider: "api"`.
 - `form_submitted` fires before the request; `lead` fires only after a 2xx response.
 - `credentials: "omit"`, no bearer token, and a stable idempotency key are required.
-- The List ID is configurable with `NEXT_PUBLIC_ZALIFY_LIST_ID`; the UI remains usable when it is not configured and reports the missing setting instead of sending an invalid request.
+- The public demo workspace and List IDs are centralized in `lib/zalify-demo-config.ts`; replace those identifiers when adapting the project to another workspace.
 
 ## UI
 

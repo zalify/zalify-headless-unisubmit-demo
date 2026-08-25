@@ -14,6 +14,7 @@
 
 **Files:**
 - Create: `theme/pixel.json`
+- Create: `lib/zalify-demo-config.ts`
 - Modify: `.env.example`
 - Modify: `README.md`
 
@@ -31,12 +32,12 @@ This causes the existing `StoreLayout` to load `https://cdn.zalify.com/pixel.js?
 
 - [ ] **Step 2: Document the public List ID setting**
 
-Add `NEXT_PUBLIC_ZALIFY_LIST_ID=` to `.env.example` and document that it is a public List ID, not a secret. Explain that the demo shows a configuration error until a real List ID is supplied.
+Create `lib/zalify-demo-config.ts` with the public workspace and List IDs used by the open-source demo. These are not secrets; replacing them is the documented adaptation point for another workspace.
 
 - [ ] **Step 3: Commit configuration**
 
 ```bash
-git add theme/pixel.json .env.example README.md
+git add theme/pixel.json lib/zalify-demo-config.ts .env.example README.md
 git commit -m "feat: configure zalify pixel demo"
 ```
 
