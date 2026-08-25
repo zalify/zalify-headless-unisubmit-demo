@@ -182,6 +182,26 @@ export function PixelEvents() {
   const cart = useCart(selectData);
   const cartLoading = useCart(selectLoading);
 
+  // The CDN loader observes the initial document, but headless route
+  // transitions do not reload it. Emit explicit page views for later SPA
+  // navigations without duplicating the loader's initial page view.
+  const pageViewKey = useRef<string | null>(null);
+  useEffect(() => {
+    if (!pathname || pageViewKey.current === pathname) return;
+    if (pageViewKey.current === null) {
+      pageViewKey.current = pathname;
+      return;
+    }
+    pageViewKey.current = pathname;
+    trackPixel('page_viewed', {
+      page: {
+        url: window.location.href,
+        path: pathname,
+        title: document.title,
+      },
+    });
+  }, [pathname]);
+
   // ---- product_viewed / collection_viewed (per pathname) ----
   const viewedKey = useRef<string | null>(null);
   useEffect(() => {
