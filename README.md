@@ -26,6 +26,10 @@ Other scripts: `pnpm build`, `pnpm start`, `pnpm typecheck`.
 
 ## Zalify integration playground
 
+See [docs/ZALIFY-INTEGRATION.md](docs/ZALIFY-INTEGRATION.md) for the complete
+CDN Pixel, event tracking, advertising forwarding, and UniSubmit integration
+guide.
+
 The home page includes a merchant-owned inline form and a popup form. Both
 call the public `https://reach.zalify.com/v1/public/unisubmit` endpoint and
 track `form_submitted` before the request plus `lead` after a successful 2xx
