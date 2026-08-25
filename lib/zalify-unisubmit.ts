@@ -53,7 +53,7 @@ export async function submitUniSubmit(
         ...(input.firstName ? {first_name: input.firstName} : {}),
       },
       submission: {
-        form_id: input.formId,
+        form_key: input.formId,
         provider: 'api',
         payload: {
           ...input.payload,
