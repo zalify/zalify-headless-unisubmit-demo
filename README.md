@@ -32,11 +32,10 @@ track `form_submitted` before the request plus `lead` after a successful 2xx
 response. The existing Shopify product, cart, and checkout flows remain in
 place so the pixel can be verified against real commerce interactions.
 
-The pixel workspace is configured in `theme/pixel.json`. Set
-`NEXT_PUBLIC_ZALIFY_LIST_ID` in `.env` to a public Zalify List ID before
-testing a submission. The List ID is not a secret. Without it, the demo still
-renders and explains the missing configuration instead of sending an invalid
-request.
+The pixel workspace is configured in `theme/pixel.json`. The public demo
+workspace and List IDs live in `lib/zalify-demo-config.ts`, so the example is
+ready to submit after cloning. Replace those public identifiers when adapting
+the project to another Zalify workspace.
 
 ```sh
 cp .env.example .env
