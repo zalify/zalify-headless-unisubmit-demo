@@ -13,6 +13,7 @@
  */
 import './styles/critical.css';
 import './styles/components.css';
+import './styles/components/zalify-demo.css';
 import type {Metadata} from 'next';
 import type {ReactNode} from 'react';
 

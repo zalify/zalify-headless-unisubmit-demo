@@ -24,6 +24,29 @@ NEXT_PUBLIC_STOREFRONT_API_TOKEN=<public storefront token>
 
 Other scripts: `pnpm build`, `pnpm start`, `pnpm typecheck`.
 
+## Zalify integration playground
+
+The home page includes a merchant-owned inline form and a popup form. Both
+call the public `https://reach.zalify.com/v1/public/unisubmit` endpoint and
+track `form_submitted` before the request plus `lead` after a successful 2xx
+response. The existing Shopify product, cart, and checkout flows remain in
+place so the pixel can be verified against real commerce interactions.
+
+The pixel workspace is configured in `theme/pixel.json`. Set
+`NEXT_PUBLIC_ZALIFY_LIST_ID` in `.env` to a public Zalify List ID before
+testing a submission. The List ID is not a secret. Without it, the demo still
+renders and explains the missing configuration instead of sending an invalid
+request.
+
+```sh
+cp .env.example .env
+pnpm install
+pnpm dev
+```
+
+Open `http://localhost:3000`, use the inline form and popup form, then inspect
+the browser Network panel for the UniSubmit request and pixel event calls.
+
 ## Your theme data lives in `theme/`
 
 A standalone (scaffolded) project customizes the theme through the
