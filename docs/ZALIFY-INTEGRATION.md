@@ -1,7 +1,7 @@
 # Zalify headless integration
 
-This demo shows how to add Zalify to a Shopify headless storefront without
-replacing the storefront UI. It combines the Zalify CDN Pixel with the public
+This demo shows how to add Zalify to a headless storefront without replacing
+the storefront UI. It combines the Zalify CDN Pixel with the public
 UniSubmit endpoint:
 
 ```text
@@ -16,20 +16,12 @@ React form → UniSubmit → form_submitted / lead → CDN Pixel
 
 ## 1. Configure the workspace
 
-Set the public workspace ID in [`theme/pixel.json`](../theme/pixel.json):
+Set the public workspace ID with environment variables or in
+[`lib/config.ts`](../lib/config.ts):
 
-```json
-{
-  "workspaceId": "your-workspace-id"
-}
-```
-
-Set the List ID used by the example forms in
-[`lib/zalify-demo-config.ts`](../lib/zalify-demo-config.ts):
-
-```ts
-export const ZALIFY_DEMO_WORKSPACE_ID = 'your-workspace-id';
-export const ZALIFY_DEMO_LIST_ID = 'your-list-id';
+```sh
+NEXT_PUBLIC_ZALIFY_WORKSPACE_ID=your-workspace-id
+NEXT_PUBLIC_ZALIFY_LIST_ID=your-list-id
 ```
 
 These are public storefront identifiers. Never put private Zalify API keys in
@@ -37,7 +29,7 @@ browser code.
 
 ## 2. Load the CDN Pixel
 
-[`components/StoreLayout.tsx`](../components/StoreLayout.tsx) renders a queue
+[`app/layout.tsx`](../app/layout.tsx) renders a queue
 stub and loads the official CDN script:
 
 ```tsx
@@ -54,8 +46,7 @@ stub and loads the official CDN script:
 ```
 
 The queue means events fired during hydration are retained until the script is
-ready. The workspace ID comes from `theme/pixel.json`; if it is missing, the
-Pixel script is not loaded.
+ready. The workspace ID comes from the environment variable or `lib/config.ts`.
 
 ## 3. Send storefront events
 
@@ -71,8 +62,8 @@ trackPixel('product_viewed', {
 });
 ```
 
-[`components/theme/PixelEvents.tsx`](../components/theme/PixelEvents.tsx) is
-the single event bridge for the demo. It tracks:
+[`components/PixelPlayground.tsx`](../components/PixelPlayground.tsx) is the
+single event bridge for the demo. It tracks:
 
 | Event | Trigger |
 | --- | --- |
@@ -85,15 +76,14 @@ the single event bridge for the demo. It tracks:
 | `form_submitted` | A signup form passes local validation and begins UniSubmit |
 | `lead` | UniSubmit returns any HTTP 2xx response |
 
-The event bridge derives payloads from the existing Shopify Storefront API
-objects and cart store. Do not add tracking calls to every product or cart
-component; extend `PixelEvents` when a new global storefront event is needed.
+In a real storefront, derive payloads from your Shopify Storefront API objects
+and cart store. Keep event calls in one bridge instead of scattering them
+through every product or cart component.
 
 ## 4. Submit a headless form with UniSubmit
 
-The custom forms in [`components/ZalifySignupForm.tsx`](../components/ZalifySignupForm.tsx)
-call [`lib/zalify-unisubmit.ts`](../lib/zalify-unisubmit.ts). The browser
-request is:
+The example form buttons demonstrate event payloads. A real browser form can
+call the public UniSubmit endpoint with:
 
 ```ts
 await fetch('https://reach.zalify.com/v1/public/unisubmit', {

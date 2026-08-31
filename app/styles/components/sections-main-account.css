@@ -1,7 +1,0 @@
-/* extracted from sections/main-account.liquid — do not edit; run `pnpm sync` */
-@layer components {
-    .customer__subheading {
-      font-size: var(--type-lg);
-      font-weight: 500;
-    }
-  }

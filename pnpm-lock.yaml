@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@zalify/storefront-kit':
-        specifier: ^0.1.9
-        version: 0.1.11(react@19.2.8)
       next:
         specifier: ^16.3.0
         version: 16.3.2(@types/node@22.20.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -269,14 +266,6 @@ packages:
 
   '@types/react@19.2.18':
     resolution: {integrity: sha512-AnzbBERsrLKtk2XSfTbYRLjQPdy116Sty4q+T+Bp3IC4l6jNBvreVPAHmpq9qhXQM7CXZPjLVmGMw9sy+hxQ3w==}
-
-  '@zalify/storefront-kit@0.1.11':
-    resolution: {integrity: sha512-B+zttwvPfvb08M/iy9FyC0+EgatEAuBQANAUu+8TG9i+zIUOM5nWt6UjRiN6EB1XBDaCLXIJJvk5ZrYMz257dw==}
-    peerDependencies:
-      react: '>=18'
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   baseline-browser-mapping@2.11.19:
     resolution: {integrity: sha512-Grytf1xOxOEMTGRwx6rLGKkTabd4vMg3VrKdj/7joCmV0qgh4QwMMO6xh34YEXQqirAuUdgQGa5orJQQ+69RBw==}
@@ -538,10 +527,6 @@ snapshots:
   '@types/react@19.2.18':
     dependencies:
       csstype: 3.2.3
-
-  '@zalify/storefront-kit@0.1.11(react@19.2.8)':
-    optionalDependencies:
-      react: 19.2.8
 
   baseline-browser-mapping@2.11.19: {}
 

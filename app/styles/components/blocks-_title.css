@@ -1,9 +1,0 @@
-/* extracted from blocks/_title.liquid — do not edit; run `pnpm sync` */
-@layer components {
-    .product__badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2xs);
-      margin-block-end: var(--space-2xs);
-    }
-  }

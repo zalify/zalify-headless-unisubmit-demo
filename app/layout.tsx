@@ -1,33 +1,28 @@
-/**
- * Root layout — the store-agnostic shell: <html>/<body> plus
- * critical.css and the extracted component CSS (both come from the
- * theme, not from any store's data).
- *
- * Everything store-specific (theme providers, header/footer/overlay
- * groups, globals, cart) lives in components/StoreLayout.tsx, mounted
- * by the two segment layouts:
- * - app/(default)/layout.tsx — the classic env-configured store
- *   (single-tenant mode; also the fallback when no Host matches).
- * - app/s/[store]/layout.tsx — registry stores, reached through the
- *   multi-tenant middleware rewrite.
- */
-import './styles/critical.css';
-import './styles/components.css';
-import './styles/components/zalify-demo.css';
 import type {Metadata} from 'next';
-import type {ReactNode} from 'react';
+import './globals.css';
+import {workspaceId} from '~/lib/config';
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Zalify Storefront',
-    template: '%s | Zalify Storefront',
-  },
+  title: 'Zalify Pixel headless demo',
+  description: 'A minimal Next.js 16 project for Zalify Pixel events.',
 };
 
-export default function RootLayout({children}: {children: ReactNode}) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'window.zalify=window.zalify||function(){(zalify.q=zalify.q||[]).push(arguments)};',
+          }}
+        />
+        <script
+          src={`https://cdn.zalify.com/pixel.js?wid=${encodeURIComponent(workspaceId)}`}
+          defer
+        />
+        {children}
+      </body>
     </html>
   );
 }
